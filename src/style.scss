@@ -1,0 +1,98 @@
+$color: #007CF0;
+
+input[role="submit"] {
+  cursor: pointer;
+  border: 2px solid $color;
+  background-color: transparent;
+  height: 30px;
+  line-height: 20px;
+  color: $color;
+  padding: 0;
+  width: 60px;
+  text-align: center;
+  border-radius: 5px;
+  float: right;
+  transition: all 200ms ease-in;
+  margin:0px;
+	// animation: turn 2s ease-in-out 1 forwards
+  &:focus {
+    font-size: 0px;
+    outline: 0;
+    color: transparent;
+    background-color: transparent;
+  }
+  &:hover {
+    background-color: $color;
+    color: #fff;
+    outline: 0;
+  }
+  &:active {
+    font-size: 0px;
+    outline: 0;
+    color: transparent;
+    background-color: transparent;
+    
+  }
+  &.clicked {
+    margin-right: 15px;
+    color: transparent;
+    background-color: transparent;
+    width: 30px;
+        border-width: 5px;
+    border-color: #ddd;
+    -webkit-animation:spin 1.5s linear infinite;
+    -moz-animation:spin 1.5s linear infinite;
+    animation:spin 1.5s linear infinite;
+    border-top-color: $color;
+    border-radius: 15px;
+
+  }
+  &.done,
+  &.done:hover {
+    
+    background-color: $color;
+    color: #fff;
+    font-family: 'FontAwesome' !important;
+    font-size: 20px;
+    float: right;
+  }
+} @-moz-keyframes spin {
+  99% {
+      transform: rotateZ(360deg);
+      background-color: transparent;
+      border-color: #ddd;
+      border-top-color: $color;
+ }
+  100% {
+      -moz-transform: rotate(360deg);
+      border-color: #ddd;
+      border-color: $color;
+ }
+}
+@-webkit-keyframes spin {
+  99% {
+      transform: rotateZ(360deg);
+      background-color: transparent;
+      border-color: #ddd;
+      border-top-color: $color;
+ }
+  100% {
+      -webkit-transform: rotate(360deg);
+      border-color: #ddd;
+      border-color: $color;
+ }
+}
+@keyframes spin {
+  99% {
+      transform: rotateZ(360deg);
+      background-color: transparent;
+      border-color: #ddd;
+      border-top-color: $color;
+ }
+  100% {
+      -webkit-transform: rotate(360deg);
+      transform:rotate(360deg);
+      border-color: #ddd;
+      border-color: $color;
+ }
+}

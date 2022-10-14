@@ -2029,8 +2029,8 @@ body{
 
    }
    .magiceden:hover {
-   background: #120c18;
-   border: 1.25px solid #000000;
+   background: #ececec;
+   border: 1.25px solid #ececec;
    transition: all 200ms ease-in-out
    
    }

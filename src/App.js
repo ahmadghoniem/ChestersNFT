@@ -108,16 +108,16 @@ UpdateSolStatus();
 	  const onClickHandlerCheck = e => {
 		
 		var BtnObject = e.target;
-		var eleval = BtnObject.closest("li").getAttribute("token-id");
-		if (eleval == "") { return null;}
-		// turn all data to skellies..
 		var Pnode= (e.target).closest("li");
+
+		if (Pnode.getAttribute("token-id") == "") { return null;}
+		// turn all data to skellies..
 		var classfinder = BtnObject.getAttribute("class");
 
 		if (classfinder != "done") {
 			BtnObject.setAttribute("class",classfinder+" clicked");
 
-			NFTsearch(eleval, Pnode);
+			NFTsearch(Pnode.getAttribute("token-id"), Pnode);
 
 			Pnode.getElementsByClassName("team-02__person_img")[0].onload = function () {
 				BtnObject.setAttribute("class","done");
@@ -133,7 +133,7 @@ UpdateSolStatus();
 		e.target.setAttribute("disabled", true);
 	  }
 
-	  function generateRandom(e) {
+	  function generateRandom() {
 		var newval = getRandom(Object.keys(JsonObj), 1);
 		document.getElementById("search").value = newval;
 		getValueInput();

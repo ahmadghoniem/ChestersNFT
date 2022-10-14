@@ -8,7 +8,6 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
-
     "moralis": "^2.5.5",
     "moralis-v1": "^1.11.0",
     "node-sass": "^7.0.3",

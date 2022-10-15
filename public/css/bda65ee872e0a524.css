@@ -2134,7 +2134,7 @@ color:#3d3d3d;
 
 .fa-refresh {
 color:white !important;
-margin-left:15px;
+margin-left:10px;
 }
 
 
@@ -2142,22 +2142,17 @@ margin-left:15px;
 .inputz {
 
 color: rgba(0,0,0,.87);
-              border-bottom-color: rgba(0,0,0,.42);
-              font-size: 1rem;
-              font-weight: 400;
-              letter-spacing: .009375em;
-              text-decoration: inherit;
-              text-transform: inherit;
-              align-self: flex-end;
-              box-sizing: border-box;
-              width: 430px;
-              padding-left: 5px;
-              transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
-              border: none;
-              border-bottom: 3px solid;
-              border-radius: 4px 4px 0 0;
-              background: rgb(245, 245, 245);
-              height: 45px;
+border-bottom-color: rgba(0,0,0,.42);
+font-size: 0.7rem;
+font-weight: 400;
+box-sizing: border-box;
+width: 300px;
+padding-left: 5px;
+transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+border: none;
+border-radius: 3px;
+background: rgb(245, 245, 245);
+height: 30px;
               
 
           
@@ -2171,7 +2166,7 @@ color: rgba(0,0,0,.87);
                   border-color:#FF5B4F;
               }
 .inputz-container {
-width: 500px;
+width: 425px;
 }
 .comps .team-02__person_about {
 margin-bottom: 0px; 
@@ -2192,18 +2187,18 @@ text-transform: none;
 }
 
 .general-container {
-margin: 50px auto;
-width: 500px;
-margin-top: 0px;
-margin-bottom: 0px;
+   margin: 0px auto;
+   width: 400px;
+   margin-top: 0px;
+   margin-bottom: 0px;
 
 
 }
 
 .fa-refresh {
 cursor: pointer;
-height: 40px;
-vertical-align: middle;
+height: 10px;
+vertical-align: sub;
 }
 .copyme {
 display: inline-block;
@@ -2363,3 +2358,26 @@ height: 14px;
 vertical-align: middle;
 margin-left: 5px;
 }
+.btn {
+   max-width: 70px;
+   height: 30px;
+   vertical-align: middle;
+   display: inline-block;
+   margin-left: 10px;
+   padding: 4px;
+   text-align: center;
+   color: white;
+   border-radius: 3px;
+   cursor: pointer;
+   background-color:#FF4D4D ;
+  }
+ 
+ /* Demo Stuff End -> */
+ 
+ /* <- Magic Stuff Start */
+ 
+ .btn:hover {
+   background-position: right center; /* change the direction of the change here */
+ }
+
+ 

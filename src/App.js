@@ -2,12 +2,13 @@ import {PublicKey} from '@solana/web3.js'
 import React, { useState } from "react";
 import "./style.scss";
 import JsonObj from './data.json';
-import axios from 'axios';
+const axios = require('axios');
+const retry = require('retry');
 
 
 const App = () => {
 // CONSTANTS
-	const [tokenAddresses, settokenAddresses] = useState([""]);
+	const [tokenAddresses, settokenAddresses] = useState(["2HBKuttQBMXu4rzer1UBckzuZ93AYbRbVt7BdmLqXht1"]);
 	const [address, setAddress] = useState("");
 // FUNCTIONS	
 function calculateTPS(response) {
@@ -44,7 +45,6 @@ fetch('https://solana-mainnet.g.alchemy.com/v2/demo', options)
 UpdateSolStatus();
 
     function getValueInput() {
-		//check conditions here and don't change address unless they match a wallet in database
 
 		let inputValue = document.getElementById("search").value;
 		
@@ -80,7 +80,6 @@ UpdateSolStatus();
 		settokenAddresses([""]);
 		setAddress("");
 		}
-
 	}
 
 	function getRandom(arr, n) {
@@ -108,27 +107,19 @@ UpdateSolStatus();
 	  const onClickHandlerCheck = e => {
 		
 		var BtnObject = e.target;
-		var Pnode= (e.target).closest("li");
+		BtnObject.setAttribute("class","clicked");
 
+		var Pnode= (e.target).closest("li");
 		if (Pnode.getAttribute("token-id") == "") { return null;}
 		// turn all data to skellies..
-		var classfinder = BtnObject.getAttribute("class");
-
-		if (classfinder != "done") {
-			BtnObject.setAttribute("class",classfinder+" clicked");
+			
 
 			NFTsearch(Pnode.getAttribute("token-id"), Pnode);
 
-			Pnode.getElementsByClassName("team-02__person_img")[0].onload = function () {
+			Pnode.querySelector(".team-02__person_img").onload = function () {
 				BtnObject.setAttribute("class","done");
 				BtnObject.setAttribute("value",'');
 			};
-
-
-		} else if (classfinder == "done"){
-			BtnObject.setAttribute("class","clicked");
-			BtnObject.setAttribute("value",'submit');
-		}
 
 		e.target.setAttribute("disabled", true);
 	  }
@@ -136,7 +127,6 @@ UpdateSolStatus();
 	  function generateRandom() {
 		var newval = getRandom(Object.keys(JsonObj), 1);
 		document.getElementById("search").value = newval;
-		getValueInput();
 	}
 
    function validateSolAddress(address) {
@@ -149,18 +139,10 @@ UpdateSolStatus();
 		}
 	} 
 
-	function getAmount(address) {
-		try {
-			let amount = JsonObj[address]["amount"];
-		return ("amount: "+amount);
-		} catch {
-		  return [""];
-		}
-  }
 
   
 async function NFTsearch(token,Pnode) {
-
+var tries = 1;
 		const options = {
 			method: 'GET',
 			url: 'https://solana-gateway.moralis.io/nft/mainnet/'+token+'/metadata',
@@ -170,35 +152,39 @@ async function NFTsearch(token,Pnode) {
 			}
 		  };
 
-		  //
-		  var xmlHttp = new XMLHttpRequest();
-		  var element =Pnode.querySelector("#solscan");
-		  xmlHttp.open( "GET", "https://public-api-test.solscan.io/token/holders?tokenAddress="+token+"&limit=1&offset=0", false ); // false for synchronous request
-		  xmlHttp.send( null );
-		   var result = JSON.parse(xmlHttp.responseText);
-		   element.style.color = (result.data[0].owner == address) ? "#2f8611" : "#bf1e2e";
-		  //
 
-		  axios
-			.request(options)
-			.then(async function (response) {
-				let uri = response.data.metaplex.metadataUri;
-				await fetch(uri)
-				.then((response) => response.json())
-				.then((data) => {
-					Pnode.querySelector(".collectio").innerHTML= ( 
-						 (data.hasOwnProperty('collection')) ? data.collection.name : data.symbol //collection name/symbol
-						 ); 
-					Pnode.querySelector(".nameos").innerHTML=data.name; 							//name
-					Pnode.querySelector(".description").innerHTML=data.description; 				//description
-					Pnode.querySelector(".team-02__person_img").src =  data.image; 	//image
-					Pnode.querySelector("#MagicEdenLink").href = "https://magiceden.io/item-details/" + token //magiceden link
-					Pnode.querySelector("#solscan").href = "https://solscan.io/token/" + token; //solscan link
+	axios
+	.request(options)
+	.then(async function (response) {
+		let uri = response.data.metaplex.metadataUri;
+		await fetch(uri)
+		.then((response) => response.json())
+		.then((data) => {
+			Pnode.querySelector(".collectio").innerHTML= ( 
+				 (data.hasOwnProperty('collection')) ? data.collection.name : data.symbol //collection name/symbol
+				 ); 
+			Pnode.querySelector(".nameos").innerHTML=data.name; 							//name
+			Pnode.querySelector(".description").innerHTML=data.description; 				//description
+			Pnode.querySelector(".team-02__person_img").src =  data.image; 	//image
+			Pnode.querySelector("#MagicEdenLink").href = "https://magiceden.io/item-details/" + token //magiceden link
+			Pnode.querySelector("#solscan").href = "https://solscan.io/token/" + token; //solscan link
+
+			// owner check
+			var xmlHttp = new XMLHttpRequest();
+			var element =Pnode.querySelector("#solscan");
+			xmlHttp.open( "GET", "https://public-api-test.solscan.io/token/holders?tokenAddress="+token+"&limit=1&offset=0", false ); // false for synchronous request
+			xmlHttp.send( null );
+			 var result = JSON.parse(xmlHttp.responseText);
+			 element.style.color = (result.data[0].owner == address) ? "#2f8611" : "#bf1e2e";
+		});
+	})
+	.catch(function (error) {
+		if (tries< 5) {
+			console.log("trial num:"+tries);
+			tries = tries+1;
+			NFTsearch(token,Pnode);
+		}
 				});
-			})
-			.catch(function (error) {
-			  console.error(error);
-			});
 
 	}
 
@@ -213,11 +199,10 @@ async function NFTsearch(token,Pnode) {
             type="text"
 			id="search"
 			class="inputz"
-			Value=""
-			onChange={getValueInput}
+			value=""
 			/>
-			   <a class="tooltip-right" data-tooltip="generate a random addy!"><i class="fa fa-refresh fa-2x" aria-hidden="true" onClick={generateRandom}></i></a>
-			   
+				<div class="btn" onClick={getValueInput}>Search</div>
+			   <a class="tooltip-right" data-tooltip="generate a random addy!"><i class="fa fa-refresh fa-xl" aria-hidden="true" onClick={generateRandom}></i></a>
 		  </div>
 			{/*<span class="amount">{getAmount(address)}</span>*/}
 		  	<span class="error"></span>
@@ -229,7 +214,7 @@ async function NFTsearch(token,Pnode) {
           return <li key={item} token-id={item} class="team-02__person">
 		  <div class="team-02__person_box">
 			 <div class="team-02__person_img_box">
-				<img class="team-02__person_img"src="sss.svg" />
+				<img class="team-02__person_img"src="finalnude.png" />
 			 </div>
 
 			 <div class="team-02__person_tag">
@@ -240,7 +225,8 @@ async function NFTsearch(token,Pnode) {
 
 				<a class="tooltip-right copyme" >
 					<img width="14" height="14" src="copy-to-clipboard.svg" onClick={
-						(e)=> (e.target).parentNode.setAttribute("data-tooltip","copied") 
+						//create attribute
+						(e)=> e.target.closest("a").setAttribute("data-tooltip","copied") 
 					(navigator.clipboard.writeText(e.target.closest("li").getAttribute("token-id")))}
 					 onMouseLeave={(e)=> e.target.parentNode.removeAttribute("data-tooltip")} alt="icon copy" /> </a>
 				</span>
@@ -248,11 +234,11 @@ async function NFTsearch(token,Pnode) {
 
 			 </div>
 
-			 <div class="team-02__person_name nameos">nft name</div>
-			 <div class="team-02__person_name collectio">collection name / symbol</div>
+			 <div class="team-02__person_name nameos">Chester #num</div>
+			 <div class="team-02__person_name collectio">Chesters</div>
 
 			 <div class="team-02__person_about content_box">
-			 <p class="description">Collection description</p>
+			 <p class="description">A Collection of 1,110 NFTs community driven project vote for your NFT rpize</p>
 			<div></div>
 			 <a id="MagicEdenLink" href="javascript:;" target="_blank">
 				   <div class="new_button magiceden"> 

@@ -104,10 +104,7 @@ button:focus,input:focus{
     overflow:hidden;
     background-color:#eee 
 }
-.team-02__person_img{
-    max-width:100%;
-    max-height:100% 
-}
+
 .team-02__person_name{
     margin-bottom:15px;
     letter-spacing:.02em;
@@ -609,11 +606,11 @@ background-image: linear-gradient(90deg,#007CF0,#00DFD8);
 }
 .hero_description__IXY_z{
    line-height:1.6em!important;
-   color:var(--geist-secondary);
+   color:var(--accents-7);
    font-weight:400;
    font-size:1.25rem;
    letter-spacing:-.02em;
-   text-align:center;
+   text-align: center;
    margin:var(--geist-gap-quarter) 0 var(--geist-space-16x)
 }
 .hero_buttons__nST_h{
@@ -625,7 +622,7 @@ background-image: linear-gradient(90deg,#007CF0,#00DFD8);
 }
 @media (min-width:1200px){
    .hero_title__HaAVy{
-       font-size:10rem
+       font-size:7.5rem
    }
 }
 @media (min-width:1024px){
@@ -803,7 +800,7 @@ background-image: linear-gradient(90deg,#007CF0,#00DFD8);
    font-weight:400
 }
 .paragraph_paragraph__w5Ihr.paragraph_secondary__6GKTk{
-   color:var(--geist-secondary);
+   color:var(--accents-7);
 }
 .develop-demo_develop-demo__jAkJF{
    display:grid;
@@ -877,7 +874,6 @@ background-image: linear-gradient(90deg,#007CF0,#00DFD8);
    max-width:45rem;
    margin-left:auto;
    margin-right:auto;
-   text-align:center
 }
 .section-description_two-col__tXHxl{
    margin-top:var(--geist-gap-half);
@@ -918,7 +914,7 @@ background-image: linear-gradient(90deg,#007CF0,#00DFD8);
    flex-direction:column
 }
 .preview-item_descriptions-body__ZaKA5{
-   color:var(--accents-6)
+   color:var(--accents-7)
 }
 @media (max-width:959px){
    .preview-item_wrapper__CTIrc{
@@ -2047,9 +2043,9 @@ body{
    }
 
    .team-02__person_img {
-max-width: 350px;
+width: 350px;
 margin-top: 20px;
-max-height: 335px;
+height: 335px;
 border-radius: 10px;
 }
   .reveal:hover {
@@ -2379,5 +2375,92 @@ margin-left: 5px;
  .btn:hover {
    background-position: right center; /* change the direction of the change here */
  }
-
+ @media only screen 
+ and (min-device-width: 180px) 
+ and (max-device-width: 320px)
+ and (-webkit-min-device-pixel-ratio: 2) {
+    .team-02__person_img {
+       width: 350px;
+       margin-top: 20px;
+       height: 225px;
+       border-radius: 10px;
+       }
+       .inputz {
+          width: 155px !important;
+      }
+ }
  
+ /* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2) {
+   .team-02__person_img {
+      width: 350px;
+      margin-top: 20px;
+      height: 225px;
+      border-radius: 10px;
+      }
+      .inputz {
+         width: 265px !important;
+     }
+}
+
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2) { 
+   .team-02__person_img {
+      width: 350px;
+      margin-top: 20px;
+      height: 225px;
+      border-radius: 10px;
+      }
+      .inputz {
+         width: 265px !important;
+     }
+}
+
+
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+and (min-device-width: 414px) 
+and (max-device-width: 736px) 
+and (-webkit-min-device-pixel-ratio: 3) { 
+   .team-02__person_img {
+      width: 350px;
+      margin-top: 20px;
+      height: 225px;
+      border-radius: 10px;
+      }
+      .inputz {
+         width: 265px !important;
+     }
+}
+
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3) { 
+   .team-02__person_img {
+      width: 350px;
+      margin-top: 20px;
+      height: 225px;
+      border-radius: 10px;
+      }
+      .inputz {
+         width: 265px !important;
+     }
+}

@@ -138,7 +138,11 @@ UpdateSolStatus();
 			return false
 		}
 	} 
-
+	function CopyTokenAddress(e) {
+		var Obj = e.target;
+		Obj.closest("a").setAttribute("data-tooltip","copied");
+		navigator.clipboard.writeText(e.target.closest("li").getAttribute("token-id"));
+	} 
 
   
 async function NFTsearch(token,Pnode) {
@@ -199,7 +203,6 @@ var tries = 1;
             type="text"
 			id="search"
 			class="inputz"
-			value=""
 			/>
 				<div class="btn" onClick={getValueInput}>Search</div>
 			   <a class="tooltip-right" data-tooltip="generate a random addy!"><i class="fa fa-refresh fa-xl" aria-hidden="true" onClick={generateRandom}></i></a>
@@ -224,11 +227,7 @@ var tries = 1;
 				</a>
 
 				<a class="tooltip-right copyme" >
-					<img width="14" height="14" src="copy-to-clipboard.svg" onClick={
-						//create attribute
-						(e)=> e.target.closest("a").setAttribute("data-tooltip","copied") 
-					(navigator.clipboard.writeText(e.target.closest("li").getAttribute("token-id")))}
-					 onMouseLeave={(e)=> e.target.parentNode.removeAttribute("data-tooltip")} alt="icon copy" /> </a>
+					<img width="14" height="14" src="copy-to-clipboard.svg" onClick={CopyTokenAddress} onMouseLeave={(e)=> e.target.parentNode.removeAttribute("data-tooltip")} alt="icon copy" /> </a>
 				</span>
 				<a class="tooltip-right" data-tooltip="If the Token Address is in (green) that means that wallet owner currently owns the NFT while if it is in (Red) that means he doesn't"><img class="more-info" src="https://cdn-icons-png.flaticon.com/512/8/8201.png"  /></a>
 
@@ -238,7 +237,8 @@ var tries = 1;
 			 <div class="team-02__person_name collectio">Chesters</div>
 
 			 <div class="team-02__person_about content_box">
-			 <p class="description">A Collection of 1,110 NFTs community driven project vote for your NFT rpize</p>
+			 <p class="description">Community driven project Vote for which NFTs you want to be purchased with project's funds and airdropped back to holders from Top tier projects to small buildooors!
+                  </p>
 			<div></div>
 			 <a id="MagicEdenLink" href="javascript:;" target="_blank">
 				   <div class="new_button magiceden"> 

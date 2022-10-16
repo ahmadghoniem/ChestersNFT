@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <meta content="summary_large_image" name="twitter:card">
     <meta content="Mint. Snapshot. Reveal. Chesters!" property="og:title">
     <link rel="stylesheet" href="css/bda65ee872e0a524.css" data-n-g>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/css-skeletons@1.0.7/dist/css-skeletons.min.css" />
 
     <noscript data-n-css></noscript>
   </head>
@@ -21,8 +22,9 @@ background-color: #130D1E !important;
       padding: 5px;
       border-bottom: 0.1px solid #262121;
       ">
-          <li class="list-inline-item">Sol/USD : $ <span SolPrice></span><span style='color:#FF4D4D'; SolPriceChange></span> </li>
-          <li class="list-inline-item">Solana Network: <span SolTPS></span></li>
+          <li class="list-inline-item">Sol/USD :  <span SolPrice></span><span style='color:#FF4D4D'; SolPriceChange><div class="skeleton skeleton-line skeleton-stats" style="--c-w:100px;"></div>
+          </span> </li>
+          <li class="list-inline-item">Solana Network: <span SolTPS><div class="skeleton skeleton-line skeleton-stats" style="   --c-w: 50px;"></div></span></li>
         </ul>
       <div class="geist-page">
 

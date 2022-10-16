@@ -59,17 +59,6 @@ button:focus,input:focus{
     font-size:14px;
     transition:opacity .2s ease,transform .2s ease 
 }
-.tag{
-    display:inline;
-    padding:4px 12px;
-    border-radius:99px;
-    font-weight:700;
-    font-size:10px;
-    letter-spacing:.03em;
-    background-color:#4d61fc;
-    color:#fff;
-    text-transform:uppercase 
-}
 .team-02__list{
     padding:0;
     margin:0;
@@ -97,7 +86,6 @@ button:focus,input:focus{
     margin-left:auto;
     margin-right:auto;
     border-radius:50%;
-    box-shadow:0 7px 25px 0 rgba(37,44,97,.1);
     display:flex;
     justify-content:center;
     align-items:center;
@@ -598,7 +586,7 @@ background-image: linear-gradient(90deg,#007CF0,#00DFD8);
 }
 .hero_title__HaAVy{
    text-align:center;
-   font-size:8rem;
+   font-size:9.5rem;
    line-height:1;
    font-weight:800;
    letter-spacing:-.06em;
@@ -622,7 +610,7 @@ background-image: linear-gradient(90deg,#007CF0,#00DFD8);
 }
 @media (min-width:1200px){
    .hero_title__HaAVy{
-       font-size:7.5rem
+       font-size:9.5rem
    }
 }
 @media (min-width:1024px){
@@ -2061,11 +2049,7 @@ border-radius: 10px;
     padding-bottom:70px;
 
    }
-   .team-02__person_img_box {
-    width:250px;
-    height:250px;
-    overflow:unset;
-   }
+
    .bg-black-color .page-component__bg_overlay_box:not(.page-component__bg_overlay_box--always-white), .bg-black-color .background-color-picker__circle, .bg-black-color .footer-04, .bg-black-color .footer-02, .bg-black-color .text--01__box {
 background-color: #053344;
 }
@@ -2076,7 +2060,7 @@ background-color: #053344;
 #053342
 */
    .team-02__person {
-   width:330px;
+   width:335px !important;
    box-sizing: content-box;
    width: 330px;
    padding: 25px 5px 0px;
@@ -2111,13 +2095,13 @@ color: #164085 ;
    }
 
    .team-02__person_img_box {
-width: 0px;
-height: 250px;
-overflow: unset;
-margin-bottom: 55px;
-border-radius: unset;
-
-}
+      width: 335px !important;
+      height: 250px;
+      overflow: unset;
+      margin-bottom: 55px;
+      border-radius: unset;
+      background: white;
+      }
 .team-02__person_name {
 margin-bottom: 5px;
 letter-spacing: 0.02em;
@@ -2171,15 +2155,15 @@ line-height: 1.6;
 color: #545454;
 }
 .tag {
-display: inline;
-padding: 4px 12px;
-border-radius: 99px;
-font-weight: 700;
-font-size: 10px;
-letter-spacing: 0.03em;
-background-color: #4d61fc36;
-color: white;
-text-transform: none;
+   display: inline;
+   padding: 4px 10px;
+   border-radius: 5px;
+   font-weight: 700;
+   font-size: 10px;
+   letter-spacing: 0.03em;
+   background-color: #ececec;
+   color: white;
+   text-transform: none;
 }
 
 .general-container {
@@ -2489,7 +2473,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
    .team-02__person_img {
       width: 350px;
       margin-top: 20px;
-      height: 220px;
+      height: 300px;
       border-radius: 10px;
       }
       .inputz {
@@ -2504,3 +2488,30 @@ and (-webkit-min-device-pixel-ratio: 3) {
       max-width: 15px;
   }
 }
+.skeleton {
+   margin:0 auto;
+   --c-p: 0px !important;
+   --l-gap: 5px !important;
+}
+.skeleton.skeleton-line.skeleton-stats {
+   --bg: #343534;
+   --shine: #3c3c3c;
+   --c-w: 150px;
+   display: inline-block;
+   vertical-align: middle;
+   margin: 0 !important;
+   perspective: 1px;
+   padding: 0;
+   --t: 2s;
+   --c-p: 0px;
+   border-collapse: separate;
+   border-radius: 30px;
+}
+ .skeleton-line::after, .skeleton-line::before {
+   border-radius: 2.5px;
+}
+
+.skeleton-img {
+   --lines: 0 !important; width: 100% !important;--rect-h: 335px !important; margin-top: 25px !important;
+}
+

@@ -37,7 +37,7 @@ fetch('https://solana-mainnet.g.alchemy.com/v2/demo', options)
 	xmlHttp.send( null );
 
     
-    document.querySelector("[SolPrice]").innerHTML =JSON.parse(xmlHttp.responseText).data.priceUsdt;
+    document.querySelector("[SolPrice]").innerHTML ="$"+JSON.parse(xmlHttp.responseText).data.priceUsdt;
 	document.querySelector("[SolPriceChange]").innerHTML =" ("+JSON.parse(xmlHttp.responseText).data.priceChange24h.toFixed(2)+"%)";
 	setTimeout(UpdateSolStatus, 1200000);
 }
@@ -112,12 +112,23 @@ UpdateSolStatus();
 		var Pnode= (e.target).closest("li");
 		if (Pnode.getAttribute("token-id") == "") { return null;}
 		// turn all data to skellies..
-			
+
+
+	   Pnode.querySelector(".nameos").innerHTML='<div class="skeleton skeleton-line" style="--c-w:50%; --l-h: 16px;"></div>'; 							//name
+	   Pnode.querySelector(".collectio").innerHTML='<div class="skeleton skeleton-line" style="--c-w:40%; --l-h: 16px;"></div>'; 
+	   Pnode.querySelector(".description").innerHTML='<div class="skeleton skeleton-line" style="    --lines: 1; --c-w: 80%; margin-top: 5px; --l-h: 16px;"></div><div class="skeleton skeleton-line" style="    --lines: 1; --c-w: 80%; margin-top: 5px; --l-h: 16px;"></div><div class="skeleton skeleton-line" style="    --lines: 1; --c-w: 80%; margin-top: 5px; --l-h: 16px;"></div>'; 				//description
+	   Pnode.querySelector(".team-02__person_img").classList.add("skeleton"); 	//image
+	   Pnode.querySelector(".team-02__person_img").classList.add("skeleton-img"); 	//image
+	   Pnode.querySelector(".team-02__person_img").removeAttribute("src"); 	//image
+
+
+
+
 
 			NFTsearch(Pnode.getAttribute("token-id"), Pnode);
 
-			Pnode.querySelector(".team-02__person_img").onload = function () {
-				BtnObject.setAttribute("class","done");
+				Pnode.querySelector(".team-02__person_img").onload = function () {
+					BtnObject.setAttribute("class","done");
 				BtnObject.setAttribute("value",'');
 			};
 
@@ -146,7 +157,6 @@ UpdateSolStatus();
 
   
 async function NFTsearch(token,Pnode) {
-var tries = 1;
 		const options = {
 			method: 'GET',
 			url: 'https://solana-gateway.moralis.io/nft/mainnet/'+token+'/metadata',
@@ -169,7 +179,8 @@ var tries = 1;
 				 ); 
 			Pnode.querySelector(".nameos").innerHTML=data.name; 							//name
 			Pnode.querySelector(".description").innerHTML=data.description; 				//description
-			Pnode.querySelector(".team-02__person_img").src =  data.image; 	//image
+			//Pnode.querySelector(".team-02__person_img_box").innerHTML = "<img class= 'team-02__person_img' src='"+data.image+"' />"; 	//image
+			Pnode.querySelector(".team-02__person_img").src =data.image; 	//image
 			Pnode.querySelector("#MagicEdenLink").href = "https://magiceden.io/item-details/" + token //magiceden link
 			Pnode.querySelector("#solscan").href = "https://solscan.io/token/" + token; //solscan link
 
@@ -183,11 +194,7 @@ var tries = 1;
 		});
 	})
 	.catch(function (error) {
-		if (tries< 5) {
-			console.log("trial num:"+tries);
-			tries = tries+1;
 			NFTsearch(token,Pnode);
-		}
 				});
 
 	}
@@ -217,7 +224,7 @@ var tries = 1;
           return <li key={item} token-id={item} class="team-02__person">
 		  <div class="team-02__person_box">
 			 <div class="team-02__person_img_box">
-				<img class="team-02__person_img"src="finalnude.png" />
+				<img class="team-02__person_img"src="finalnude.png" width="350px" height="335px" />
 			 </div>
 
 			 <div class="team-02__person_tag">

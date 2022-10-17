@@ -155,6 +155,7 @@ UpdateSolStatus();
 
   
 async function NFTsearch(token,Pnode) {
+	var trials = 0;
 		const options = {
 			method: 'GET',
 			url: 'https://solana-gateway.moralis.io/nft/mainnet/'+token+'/metadata',
@@ -191,7 +192,10 @@ async function NFTsearch(token,Pnode) {
 		});
 	})
 	.catch(function (error) {
-		console.error(error);
+		if (trials<5) {
+			trials+=1;
+		NFTsearch(token,Pnode);	
+		}
 				});
 
 	}

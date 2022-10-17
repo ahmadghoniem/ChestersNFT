@@ -160,11 +160,10 @@ async function NFTsearch(token,Pnode) {
 			url: 'https://solana-gateway.moralis.io/nft/mainnet/'+token+'/metadata',
 			headers: {
 			  accept: 'application/json',
-			  'X-API-Key':process.env.REACT_APP_BART_API_KEY
+			  'X-API-Key':'Lza3p5nSkrTu8gMJm41CCySOIS40XFxdbUOCKeRjVcJJzd7Dl5MCjw0nYz8HJ2Bj'
 			}
 		  };
 
-console.log( process.env.REACT_APP_BART_API_KEY);
 	axios
 	.request(options)
 	.then(async function (response) {

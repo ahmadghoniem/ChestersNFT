@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import "./style.scss";
 import JsonObj from './data.json';
 const axios = require('axios');
-const retry = require('retry');
-
 
 const App = () => {
 // CONSTANTS
@@ -114,12 +112,12 @@ UpdateSolStatus();
 		// turn all data to skellies..
 
 
-	   Pnode.querySelector(".nameos").innerHTML='<div class="skeleton skeleton-line" style="--c-w:50%; --l-h: 16px;"></div>'; 							//name
-	   Pnode.querySelector(".collectio").innerHTML='<div class="skeleton skeleton-line" style="--c-w:40%; --l-h: 16px;"></div>'; 
+	   Pnode.querySelector(".grid-card_name").innerHTML='<div class="skeleton skeleton-line" style="--c-w:50%; --l-h: 16px;"></div>'; 							//name
+	   Pnode.querySelector(".collection").innerHTML='<div class="skeleton skeleton-line" style="--c-w:40%; --l-h: 16px;"></div>'; 
 	   Pnode.querySelector(".description").innerHTML='<div class="skeleton skeleton-line" style="    --lines: 1; --c-w: 80%; margin-top: 5px; --l-h: 16px;"></div><div class="skeleton skeleton-line" style="    --lines: 1; --c-w: 80%; margin-top: 5px; --l-h: 16px;"></div><div class="skeleton skeleton-line" style="    --lines: 1; --c-w: 80%; margin-top: 5px; --l-h: 16px;"></div>'; 				//description
-	   Pnode.querySelector(".team-02__person_img").classList.add("skeleton"); 	//image
-	   Pnode.querySelector(".team-02__person_img").classList.add("skeleton-img"); 	//image
-	   Pnode.querySelector(".team-02__person_img").removeAttribute("src"); 	//image
+	   Pnode.querySelector(".grid-card_img").classList.add("skeleton"); 	//image
+	   Pnode.querySelector(".grid-card_img").classList.add("skeleton-img"); 	//image
+	   Pnode.querySelector(".grid-card_img").removeAttribute("src"); 	//image
 
 
 
@@ -127,7 +125,7 @@ UpdateSolStatus();
 
 			NFTsearch(Pnode.getAttribute("token-id"), Pnode);
 
-				Pnode.querySelector(".team-02__person_img").onload = function () {
+				Pnode.querySelector(".grid-card_img").onload = function () {
 					BtnObject.setAttribute("class","done");
 				BtnObject.setAttribute("value",'');
 			};
@@ -162,11 +160,11 @@ async function NFTsearch(token,Pnode) {
 			url: 'https://solana-gateway.moralis.io/nft/mainnet/'+token+'/metadata',
 			headers: {
 			  accept: 'application/json',
-			  'X-API-Key': 'Lza3p5nSkrTu8gMJm41CCySOIS40XFxdbUOCKeRjVcJJzd7Dl5MCjw0nYz8HJ2Bj'
+			  'X-API-Key':process.env.REACT_APP_BART_API_KEY
 			}
 		  };
 
-
+console.log( process.env.REACT_APP_BART_API_KEY);
 	axios
 	.request(options)
 	.then(async function (response) {
@@ -174,13 +172,13 @@ async function NFTsearch(token,Pnode) {
 		await fetch(uri)
 		.then((response) => response.json())
 		.then((data) => {
-			Pnode.querySelector(".collectio").innerHTML= ( 
+			Pnode.querySelector(".collection").innerHTML= ( 
 				 (data.hasOwnProperty('collection')) ? data.collection.name : data.symbol //collection name/symbol
 				 ); 
-			Pnode.querySelector(".nameos").innerHTML=data.name; 							//name
+			Pnode.querySelector(".grid-card_name").innerHTML=data.name; 							//name
 			Pnode.querySelector(".description").innerHTML=data.description; 				//description
-			//Pnode.querySelector(".team-02__person_img_box").innerHTML = "<img class= 'team-02__person_img' src='"+data.image+"' />"; 	//image
-			Pnode.querySelector(".team-02__person_img").src =data.image; 	//image
+			//Pnode.querySelector(".grid-card_img_box").innerHTML = "<img class= 'grid-card_img' src='"+data.image+"' />"; 	//image
+			Pnode.querySelector(".grid-card_img").src =data.image; 	//image
 			Pnode.querySelector("#MagicEdenLink").href = "https://magiceden.io/item-details/" + token //magiceden link
 			Pnode.querySelector("#solscan").href = "https://solscan.io/token/" + token; //solscan link
 
@@ -194,7 +192,7 @@ async function NFTsearch(token,Pnode) {
 		});
 	})
 	.catch(function (error) {
-			NFTsearch(token,Pnode);
+		console.error(error);
 				});
 
 	}
@@ -219,15 +217,15 @@ async function NFTsearch(token,Pnode) {
 
 		  </div>
 		  
-		  <ul class="team-02__list">
+		  <ul class="grid-card__list">
         {tokenAddresses.map(item => {
-          return <li key={item} token-id={item} class="team-02__person">
-		  <div class="team-02__person_box">
-			 <div class="team-02__person_img_box">
-				<img class="team-02__person_img"src="finalnude.png" width="350px" height="335px" />
+          return <li key={item} token-id={item} class="grid-card">
+		  <div class="grid-card_box">
+			 <div class="grid-card_img_box">
+				<img class="grid-card_img"src="finalnude.jpg" width="315px" height="335px" />
 			 </div>
 
-			 <div class="team-02__person_tag">
+			 <div class="grid-card_tag">
 				<span class="tag color-main bg-light">
 					<a id="solscan" href="javascript:;" target="_blank"> 
 				<span class="tag__text">{SliceAndDice(item,16,10)}</span>
@@ -240,11 +238,11 @@ async function NFTsearch(token,Pnode) {
 
 			 </div>
 
-			 <div class="team-02__person_name nameos">Chester #num</div>
-			 <div class="team-02__person_name collectio">Chesters</div>
+			 <div class="grid-card_name">Chester #</div>
+			 <div class="grid-card_name collection">Chesters</div>
 
-			 <div class="team-02__person_about content_box">
-			 <p class="description">Community driven project Vote for which NFTs you want to be purchased with project's funds and airdropped back to holders from Top tier projects to small buildooors!
+			 <div class="grid-card_about content_box">
+			 <p class="description">Chesters is a project fueled by community where you get to vote which NFTs will be purchased with project's funds and airdropped back to holders from Top tier projects to small buildooors!
                   </p>
 			<div></div>
 			 <a id="MagicEdenLink" href="javascript:;" target="_blank">

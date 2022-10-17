@@ -59,7 +59,7 @@ button:focus,input:focus{
     font-size:14px;
     transition:opacity .2s ease,transform .2s ease 
 }
-.team-02__list{
+.grid-card__list{
     padding:0;
     margin:0;
     list-style:none;
@@ -69,7 +69,7 @@ button:focus,input:focus{
     flex-wrap:wrap;
     margin-bottom:-40px 
 }
-.team-02__person{
+.grid-card{
     width:260px;
     padding:25px 20px 10px;
     margin:0 20px 40px;
@@ -78,7 +78,7 @@ button:focus,input:focus{
     border-radius:10px;
     text-align:center 
 }
-.team-02__person_img_box{
+.grid-card_img_box{
     width:100px;
     height:100px;
     margin-bottom:15px;
@@ -93,14 +93,14 @@ button:focus,input:focus{
     background-color:#eee 
 }
 
-.team-02__person_name{
+.grid-card_name{
     margin-bottom:15px;
     letter-spacing:.02em;
     font-size:12px;
     font-weight:700;
     text-transform:uppercase 
 }
-.team-02__person_tag{
+.grid-card_tag{
     margin-bottom:15px 
 }
 /*! PhotoSwipe main CSS by Dmitry Semenov | photoswipe.com | MIT license */
@@ -2030,8 +2030,8 @@ body{
    font-weight: 500;
    }
 
-   .team-02__person_img {
-width: 350px;
+   .grid-card_img {
+width: 335px;
 margin-top: 20px;
 height: 335px;
 border-radius: 10px 10px 0 0 ;
@@ -2059,7 +2059,7 @@ background-color: #053344;
 #05333e
 #053342
 */
-   .team-02__person {
+   .grid-card {
    width:335px !important;
    box-sizing: content-box;
    width: 330px;
@@ -2094,7 +2094,7 @@ color: #164085 ;
 
    }
 
-   .team-02__person_img_box {
+   .grid-card_img_box {
       width: 335px !important;
       height: 250px;
       overflow: unset;
@@ -2102,7 +2102,7 @@ color: #164085 ;
       border-radius: unset;
       background: white;
       }
-.team-02__person_name {
+.grid-card_name {
 margin-bottom: 5px;
 letter-spacing: 0.02em;
 font-size: 12px;
@@ -2148,7 +2148,7 @@ height: 30px;
 .inputz-container {
 width: 425px;
 }
-.comps .team-02__person_about {
+.comps .grid-card_about {
 margin-bottom: 0px; 
 font-size: 14px;
 line-height: 1.6;
@@ -2363,7 +2363,7 @@ margin-left: 5px;
  and (min-device-width: 180px) 
  and (max-device-width: 320px)
  and (-webkit-min-device-pixel-ratio: 2) {
-    .team-02__person_img {
+    .grid-card_img {
        width: 350px;
        margin-top: 20px;
        height: 220px;
@@ -2372,7 +2372,7 @@ margin-left: 5px;
        .inputz {
           width: 155px !important;
       }
-      .team-02__person_tag {
+      .grid-card_tag {
          margin-bottom: 15px;
          width: 10px;
          white-space: nowrap;
@@ -2389,7 +2389,7 @@ margin-left: 5px;
 and (min-device-width: 320px) 
 and (max-device-width: 568px)
 and (-webkit-min-device-pixel-ratio: 2) {
-   .team-02__person_img {
+   .grid-card_img {
       width: 350px;
       margin-top: 20px;
       height: 220px;
@@ -2398,7 +2398,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
       .inputz {
          width: 265px !important;
      }
-     .team-02__person_tag {
+     .grid-card_tag {
       margin-bottom: 15px;
       width: 10px;
       white-space: nowrap;
@@ -2416,7 +2416,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
 and (min-device-width: 375px) 
 and (max-device-width: 667px) 
 and (-webkit-min-device-pixel-ratio: 2) { 
-   .team-02__person_img {
+   .grid-card_img {
       width: 350px;
       margin-top: 20px;
       height: 220px;
@@ -2425,7 +2425,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
       .inputz {
          width: 265px !important;
      }
-     .team-02__person_tag {
+     .grid-card_tag {
       margin-bottom: 15px;
       width: 10px;
       white-space: nowrap;
@@ -2443,7 +2443,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
 and (min-device-width: 414px) 
 and (max-device-width: 736px) 
 and (-webkit-min-device-pixel-ratio: 3) { 
-   .team-02__person_img {
+   .grid-card_img {
       width: 350px;
       margin-top: 20px;
       height: 220px;
@@ -2452,7 +2452,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
       .inputz {
          width: 265px !important;
      }
-     .team-02__person_tag {
+     .grid-card_tag {
       margin-bottom: 15px;
       width: 10px;
       white-space: nowrap;
@@ -2470,7 +2470,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
 and (min-device-width: 375px) 
 and (max-device-width: 812px) 
 and (-webkit-min-device-pixel-ratio: 3) { 
-   .team-02__person_img {
+   .grid-card_img {
       width: 350px;
       margin-top: 20px;
       height: 300px;
@@ -2479,7 +2479,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
       .inputz {
          width: 265px !important;
      }
-     .team-02__person_tag {
+     .grid-card_tag {
       margin-bottom: 15px;
       width: 10px;
       white-space: nowrap;
@@ -2499,12 +2499,10 @@ and (-webkit-min-device-pixel-ratio: 3) {
    --c-w: 150px;
    display: inline-block;
    vertical-align: middle;
-   margin: 0 !important;
-   perspective: 1px;
    padding: 0;
    --t: 2s;
    --c-p: 0px;
-   border-collapse: separate;
+   --l-h: 21.6px;
    border-radius: 30px;
 }
  .skeleton-line::after, .skeleton-line::before {

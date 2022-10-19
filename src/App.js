@@ -237,7 +237,7 @@ async function NFTsearch(token,Pnode) {
 				<a class="tooltip-right copyme" >
 					<img width="14" height="14" src="copy-to-clipboard.svg" onClick={CopyTokenAddress} onMouseLeave={(e)=> e.target.parentNode.removeAttribute("data-tooltip")} alt="icon copy" /> </a>
 				</span>
-				<a class="tooltip-right" data-tooltip="If the Token Address is in (green) that means that wallet owner currently owns the NFT while if it is in (Red) that means he doesn't"><img class="more-info" src="https://cdn-icons-png.flaticon.com/512/8/8201.png"  /></a>
+				<a class="tooltip-right" data-tooltip="green token address means that the wallet owner owns the nft while red token address means otherwise"><img class="more-info" src="https://cdn-icons-png.flaticon.com/512/8/8201.png"  /></a>
 
 			 </div>
 

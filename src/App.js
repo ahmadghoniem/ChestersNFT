@@ -1,7 +1,7 @@
 import {PublicKey} from '@solana/web3.js'
 import React, { useState } from "react";
 import "./style.scss";
-import JsonObj from './data.json';
+import JsonObj from './data2.json';
 const axios = require('axios');
 
 const App = () => {
